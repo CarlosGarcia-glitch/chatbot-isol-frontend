@@ -1,0 +1,13 @@
+@use '@/assets/scss/variables' as *;
+
+.footer {
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 2.75rem;
+   background-color: rgb(240, 240, 240);
+   font-size: .8rem;
+   color: $secondary-text;
+   margin-top: auto;
+}

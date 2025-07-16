@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Chat from '../pages/Chat';
-import Login from '../pages/Login';
+import Login from '../pages/Login/Login';
 
 export const RouterProvider = () => {
   return (

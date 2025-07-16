@@ -4,5 +4,22 @@
   "selected": "Seleccionado: ",
   "input": {
     "placehonder": "<b>Haz click aquí</b> o arrastra el archivo."
+  },
+  "footer": "© 2025 by ISOL. All rights reserved",
+  "login": {
+    "labels": {
+      "title": "Bienvenidos a ISOL",
+      "email": "Email",
+      "password": "Contaseña",
+      "signIn": "Iniciar sesión",
+      "signingIn": "Iniciando"
+    },
+    "email": {
+      "invalid": "El email es inválido",
+      "required": "El email es requerido"
+    },
+    "password": {
+      "required": "La contraseña es requerida"
+    }
   }
 }
