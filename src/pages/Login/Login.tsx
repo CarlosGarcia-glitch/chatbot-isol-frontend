@@ -28,6 +28,7 @@ const Login = (props: Props) => {
   const [showPassword, setShowPassword] = useState<boolean>();
 
   const schema = getLoginFormSchema(t);
+  console.log('test')
 
   const { errors, touched, values, handleBlur, handleChange, handleSubmit } =
     useFormik({
