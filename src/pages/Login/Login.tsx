@@ -39,6 +39,7 @@ const Login = (props: Props) => {
           setLoading(true);
           await AuthService.login(vals.email, vals.password);
           navigate('/chat');
+          
         } catch (error) {
           console.error(error);
         }
