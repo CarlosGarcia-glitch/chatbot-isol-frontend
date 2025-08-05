@@ -1,5 +1,6 @@
 // services/chatService.ts
 import api from './axiosInstance';
+import { parseAgentResponse } from '@/utils/utils';
 
 const getConversationId = (): string | null => {
   return localStorage.getItem('conversationId');
@@ -65,6 +66,6 @@ export const chatService = {
       formData,
     );
 
-    return response.data.message as string;
+    return parseAgentResponse(response.data.message);
   },
 };

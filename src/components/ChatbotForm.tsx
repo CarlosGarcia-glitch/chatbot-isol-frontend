@@ -25,7 +25,7 @@ const ChatbotForm = () => {
       );
       setChatHistory((history) => [
         ...history,
-        { role: 'bot', message: botResponse },
+        { role: 'bot', message: botResponse.textResponse },
       ]);
     } catch (error) {
       console.error('Error sending message to agent:', error);
