@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 import { useTranslations } from '../contexts/AppContext';
-import ChatbotIcon from './icons/ChatbotIcon';
+import BotAvatar from './Avatar/BotAvatar';
 
 export interface IChat {
   role: 'bot' | 'user';
@@ -38,7 +38,7 @@ const ChatbotMessage = ({ role, message, isLastMsg }: IChat) => {
 
   return (
     <div className={`message ${role}-message`}>
-      {role === 'bot' && <ChatbotIcon />}
+      {role === 'bot' && <BotAvatar />}
       <p ref={element} className="message-text" />
     </div>
   );
