@@ -110,7 +110,7 @@ const Chat = () => {
         <div className="chat-header">
           <div className="header-info">
             <ChatbotIcon />
-            <h2 className="logo-text">ISOL | chatbot</h2>
+            <h2 className="logo-text">ISOL Agent</h2>
           </div>
           <div className="buttons-header">
             <div>
