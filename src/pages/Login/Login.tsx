@@ -1,6 +1,4 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FormikValues, useFormik } from 'formik';
+import { VisibilityOffOutlined, VisibilityOutlined } from '@mui/icons-material';
 import {
   Button,
   CircularProgress,
@@ -9,14 +7,17 @@ import {
   InputLabel,
   TextField,
 } from '@mui/material';
-import { VisibilityOffOutlined, VisibilityOutlined } from '@mui/icons-material';
+import { FormikValues, useFormik } from 'formik';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Footer from '@/components/Footer/Footer';
 import { getLoginFormSchema } from '@/utils/schemas/loginFormSchema';
 
-import Styles from './_Login.module.scss';
+import ChatbotIcon from '@/components/icons/ChatbotIcon';
 import { useAlert, useAppContext, useTranslations } from '@/contexts/AppContext';
 import AuthService from '@/services/authService';
+import Styles from './_Login.module.scss';
 
 type Props = {};
 
@@ -58,7 +59,7 @@ const Login = (props: Props) => {
       <div className={Styles.page__content}>
         <div className={Styles.login__card}>
           <div className={Styles.login__card_img}>
-            {/* <img src={Logo} alt="" /> */}
+            <ChatbotIcon />
           </div>
           <div className={Styles.login__card_body}>
             <div className={Styles.login__card_title}>
@@ -140,7 +141,7 @@ const Login = (props: Props) => {
             </Button>
           </div>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   );
