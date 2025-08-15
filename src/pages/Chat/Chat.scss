@@ -25,6 +25,7 @@
     align-items: center;
     justify-content: space-between;
     background: $primary-color;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 
     .buttons-header {
       display: flex;
@@ -211,6 +212,12 @@
       height: 100%;
       max-height: none;
       padding: 12px 8px;
+      padding-bottom: 12rem;
+    }
+
+    .chat-footer{
+      border-top: $secondary-color 2px solid;
+      padding: 12px 22px;
     }
   }
 }
