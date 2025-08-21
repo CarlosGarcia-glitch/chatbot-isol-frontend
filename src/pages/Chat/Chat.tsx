@@ -5,16 +5,28 @@ import {
   useTranslations,
 } from '../../contexts/AppContext';
 
+import ChatbotThinking from '@/components/ChatbotThinking/ChatbotThinking';
+import AuthService from '@/services/authService';
+import { chatService } from '@/services/chatService';
+import {
+  Language,
+  LockOutline,
+  Logout,
+  Menu as MenuIcon,
+} from '@mui/icons-material';
+import {
+  Button,
+  CircularProgress,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  MenuItem,
+} from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import ChatbotForm from '../../components/ChatbotForm';
 import ChatbotMessage, { IChat } from '../../components/ChatbotMessage';
 import ChatbotIcon from '../../components/icons/ChatbotIcon';
-import { LoginOutlined } from '@mui/icons-material';
-import { CircularProgress } from '@mui/material';
-import { chatService } from '@/services/chatService';
-import ChatbotThinking from '@/components/ChatbotThinking/ChatbotThinking';
 import './Chat.scss';
-import AuthService from '@/services/authService';
-import { useNavigate } from 'react-router-dom';
 
 const Chat = () => {
   const t = useTranslations();
@@ -22,12 +34,14 @@ const Chat = () => {
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(true);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [isThinking, setIsThinking] = useState(false);
   const { language, setLanguage, chatHistory, setChatHistory } =
     useAppContext();
   const chatBodyRef = useRef<HTMLDivElement>(null);
   const hasInitializedRef = useRef(false);
   const { setAlert } = useAlert();
+  const open = Boolean(anchorEl);
 
   useEffect(() => {
     if (hasInitializedRef.current) return;
@@ -103,6 +117,14 @@ const Chat = () => {
     }
   };
 
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <div className="container">
       <div className="chatbot-popup">
@@ -110,25 +132,53 @@ const Chat = () => {
         <div className="chat-header">
           <div className="header-info">
             <ChatbotIcon />
-            <h2 className="logo-text">ISOL Agent</h2>
+            <h2 className="logo-text">{t.header}</h2>
           </div>
           <div className="buttons-header">
-            <div>
-              <button
-                onClick={toggleLanguage}
-                className="material-symbols-outlined"
+            <Button
+              id="basic-button"
+              aria-controls={open ? 'basic-menu' : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? 'true' : undefined}
+              onClick={handleClick}
+            >
+              <MenuIcon />
+            </Button>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              slotProps={{
+                list: {
+                  'aria-labelledby': 'basic-button',
+                },
+              }}
+            >
+              <MenuItem
+                onClick={() => {
+                  handleClose();
+                  navigate('/change-password');
+                }}
               >
-                {language === 'es' ? 'language_spanish' : 'language_us'}
-              </button>
-            </div>
-            <div>
-              <button
-                onClick={handleLogout}
-                className="material-symbols-outlined"
-              >
-                <LoginOutlined sx={{ height: 38 }} />
-              </button>
-            </div>
+                <ListItemIcon>
+                  <LockOutline fontSize="small" />
+                </ListItemIcon>
+                <ListItemText>{t.menu.change_password}</ListItemText>
+              </MenuItem>
+              <MenuItem onClick={toggleLanguage}>
+                <ListItemIcon>
+                  <Language fontSize="small" />
+                </ListItemIcon>
+                <ListItemText>{t.menu.lang}</ListItemText>
+              </MenuItem>
+              <MenuItem onClick={handleLogout}>
+                <ListItemIcon>
+                  <Logout fontSize="small" />
+                </ListItemIcon>
+                <ListItemText>{t.menu.logout}</ListItemText>
+              </MenuItem>
+            </Menu>
           </div>
         </div>
 
