@@ -1,0 +1,109 @@
+.container {
+  .card {
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+
+    background: white;
+
+    &_header {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      padding: 16px 22px;
+      align-items: center;
+      justify-content: space-between;
+      background: $primary-color;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+      .buttons_header {
+        display: flex;
+      }
+
+      .header_info {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+
+        .logo_text {
+          color: $contrast;
+          font-size: 1.31rem;
+          font-weight: 600f;
+        }
+      }
+
+      button {
+        height: 40px;
+        width: 40px;
+        border: none;
+        outline: none;
+        color: $contrast;
+        cursor: pointer;
+        font-size: 1.9rem;
+        padding-top: 2px;
+        border-radius: 50%;
+        transition: 2ms ease;
+        background: none;
+      }
+
+      button:hover {
+        background: $primary-color-hover;
+      }
+    }
+
+    &_body {
+      padding: 1rem;
+    }
+
+    &_footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+@media (min-width: 430px) {
+  .container {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+
+    .card {
+      position: relative;
+      width: 420px;
+      height: 100%;
+      min-height: 90vh;
+      background: white;
+      border-radius: $border-radius;
+      box-shadow:
+        0 0 128px 0 rgba(0, 0, 0, 0.1),
+        0 32px 64px,
+        -48px rgba(0, 0, 0, 0.5);
+
+      &_header {
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: $border-radius;
+      }
+      &_footer {
+        position: absolute;
+      }
+    }
+  }
+}
+
+.card_loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 2rem;
+}

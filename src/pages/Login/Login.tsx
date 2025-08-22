@@ -12,7 +12,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Footer from '@/components/Footer/Footer';
-import { getLoginFormSchema } from '@/utils/schemas/loginFormSchema';
+import { getLoginFormSchema } from '@/utils/schemas/validationSchema';
 
 import ChatbotIcon from '@/components/icons/ChatbotIcon';
 import { useAlert, useAppContext, useTranslations } from '@/contexts/AppContext';

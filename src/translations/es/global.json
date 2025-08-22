@@ -2,6 +2,12 @@
   "greeting": "Hola 👋 ¿En qué te puedo ayudar hoy?",
   "processing": "Estoy procesando tu archivo, te avisaré cuando termine",
   "selected": "Seleccionado: ",
+  "header": "ISOL Agente",
+  "menu": {
+    "change_password": "Cambiar contraseña",
+    "lang": "ES",
+    "logout": "Cerrar sesión"
+  },
   "input": {
     "placeholder": "Mensaje..."
   },
@@ -30,12 +36,26 @@
       "required": "La contraseña es requerida"
     }
   },
+  "change_password": {
+    "validations": {
+      "no_password_match": "La nueva contraseña y confirmar contraseña no coinciden.",
+      "no_valid": "La contraseña debe contener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial."
+    },
+    "error": "No se pudo cambiar tu contraseña.",
+    "success": "Contraseña actualizada con éxito",
+    "labels": {
+      "new_password": "Nueva contraseña",
+      "old_password": "Contraseña actual",
+      "confirm_password": "Confirmar contraseña"
+    },
+    "button": { "save": "Guardar", "loading": "Guardando" }
+  },
   "errors": {
     "ask_agent": {
       "chat": "Hubo un error al intenter enviar el mensaje a ISOL chatbot. Por favor contacte a su administrador o intente de nuevo más tarde.",
       "alert": "Error al enviar mensaje"
     },
-    "init_chat" : {
+    "init_chat": {
       "chat": "Hubo un error al intentar iniciar el chat. Por favor contacta a tu administrador o intenta de nuevo más tarde.",
       "alert": "Error al intentar iniciar el chat."
     }

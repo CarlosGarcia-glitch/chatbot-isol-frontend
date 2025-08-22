@@ -1,6 +1,12 @@
 {
   "greeting": "Hi! How can I assist you? ",
   "processing": "I am processing your file, I'll let you know once I'm done.",
+  "header": "Agente ISOL",
+  "menu": {
+    "change_password": "Change password",
+    "lang": "ENG",
+    "logout": "Logout"
+  },
   "selected": "Selected: ",
   "input": {
     "placeholder": "Message..."
@@ -30,12 +36,27 @@
       "required": "The password is required"
     }
   },
+  "change_password": {
+    "validations": {
+      "no_password_match": "The new password and confirm password do not match.",
+      "no_valid": "Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special case character"
+    },
+    "error": "Failed to change your password.",
+    "success": "Password updated successfully",
+    "labels": {
+      "new_password": "New password",
+      "old_password": "Current password",
+      "confirm_password": "Confirm password"
+    },
+
+    "button": { "save": "Save", "loading": "Loading" }
+  },
   "errors": {
     "ask_agent": {
       "chat": "There was an error trying to send the message to the ISOL chatbot. Please contact your administrator or try again later.",
       "alert": "Error sending message."
     },
-   "init_chat" : {
+    "init_chat": {
       "chat": "There was an error trying to start the chat. Please contact your administrator or try again later.",
       "alert": "Error trying to start the chat."
     }
