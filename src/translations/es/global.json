@@ -6,6 +6,7 @@
   "menu": {
     "change_password": "Cambiar contraseña",
     "lang": "ES",
+    "new_conversation": "Nuevo chat",
     "logout": "Cerrar sesión"
   },
   "input": {

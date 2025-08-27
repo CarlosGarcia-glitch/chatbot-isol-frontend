@@ -5,6 +5,7 @@
   "menu": {
     "change_password": "Change password",
     "lang": "ENG",
+    "new_conversation": "New chat",
     "logout": "Logout"
   },
   "selected": "Selected: ",

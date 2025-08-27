@@ -9,6 +9,7 @@ import ChatbotThinking from '@/components/ChatbotThinking/ChatbotThinking';
 import AuthService from '@/services/authService';
 import { chatService } from '@/services/chatService';
 import {
+  AddCircleOutline,
   Language,
   LockOutline,
   Logout,
@@ -125,6 +126,11 @@ const Chat = () => {
     setAnchorEl(null);
   };
 
+  const handleNewConversation = () => {
+    localStorage.removeItem('conversationId');
+    window.location.reload();
+  };
+
   return (
     <div className="container">
       <div className="chatbot-popup">
@@ -171,6 +177,12 @@ const Chat = () => {
                   <Language fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>{t.menu.lang}</ListItemText>
+              </MenuItem>
+              <MenuItem onClick={handleNewConversation}>
+                <ListItemIcon>
+                  <AddCircleOutline fontSize="small" />
+                </ListItemIcon>
+                <ListItemText>{t.menu.new_conversation}</ListItemText>
               </MenuItem>
               <MenuItem onClick={handleLogout}>
                 <ListItemIcon>
