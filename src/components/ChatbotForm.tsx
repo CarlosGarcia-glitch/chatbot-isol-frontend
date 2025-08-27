@@ -142,6 +142,26 @@ const ChatbotForm = ({ isThinking, setIsThinking }: ChatbotFormProps) => {
             ),
           }
         }}
+        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+          if (e.key === 'Enter' && !e.ctrlKey && !e.shiftKey) {
+            e.preventDefault();
+            const form = e.currentTarget.closest('form');
+            if (form) {
+              form.requestSubmit();
+            }
+          } else if (
+            (e.key === 'Enter' && e.ctrlKey) ||
+            (e.key === 'Enter' && e.shiftKey)
+          ) {
+            // Add new line for Ctrl+Enter or Alt+Enter
+            const target = e.target as HTMLInputElement;
+            const start = target.selectionStart ?? 0;
+            const end = target.selectionEnd ?? 0;
+            const newValue =
+              inputValue.substring(0, start) + inputValue.substring(end);
+            setInputValue(newValue);
+          }
+        }}
       />
     </form>
   );
