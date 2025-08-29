@@ -6,15 +6,15 @@
 
 ## ✨ **Key Changes**  
 1. **New Files:**  
-   -  <!--`.env.example`: Environment variables template >
+<!--`.env.example`: Environment variables template -->
 
 2. **Modified Files:**  
-   -  <!--`package.json`: Axios added -->
+<!--`package.json`: Axios added -->
 
 3. **Dependencies Added:**  
-   <!--```bash
-    axios "^11.10.0"
-   ``` -->
+<!--```bash
+ axios "^11.10.0"
+``` -->
 
 ## 🗂️ **File Structure Changes**  
 <!-- ```diff
