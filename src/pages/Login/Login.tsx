@@ -15,7 +15,11 @@ import Footer from '@/components/Footer/Footer';
 import { getLoginFormSchema } from '@/utils/schemas/validationSchema';
 
 import ChatbotIcon from '@/components/icons/ChatbotIcon';
-import { useAlert, useAppContext, useTranslations } from '@/contexts/AppContext';
+import {
+  useAlert,
+  useAppContext,
+  useTranslations,
+} from '@/contexts/AppContext';
 import AuthService from '@/services/authService';
 import Styles from './_Login.module.scss';
 
@@ -67,6 +71,7 @@ const Login = (props: Props) => {
             </div>
             <InputLabel htmlFor="email">{t.login.labels.email}</InputLabel>
             <TextField
+              disabled={loading}
               id="email"
               name="email"
               placeholder="example@isol.com"
@@ -85,6 +90,7 @@ const Login = (props: Props) => {
               {t.login.labels.password}
             </InputLabel>
             <TextField
+              disabled={loading}
               data-testid="password-input"
               id="password"
               name="password"
