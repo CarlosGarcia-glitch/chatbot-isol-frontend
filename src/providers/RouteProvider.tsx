@@ -1,10 +1,4 @@
-import {
-  Routes,
-  Route,
-  Navigate,
-  BrowserRouter,
-  HashRouter,
-} from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ProtectedRoute } from './ProtectedRoute ';
 import Login from '@/pages/Login/Login';
 import Chat from '@/pages/Chat/Chat';
