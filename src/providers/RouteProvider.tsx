@@ -1,4 +1,10 @@
-import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
+import {
+  Routes,
+  Route,
+  Navigate,
+  BrowserRouter,
+  HashRouter,
+} from 'react-router-dom';
 import { ProtectedRoute } from './ProtectedRoute ';
 import Login from '@/pages/Login/Login';
 import Chat from '@/pages/Chat/Chat';
@@ -6,7 +12,7 @@ import Account from '@/pages/Account/Account';
 
 export const RouterProvider = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Login />} />
 
@@ -17,6 +23,6 @@ export const RouterProvider = () => {
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
