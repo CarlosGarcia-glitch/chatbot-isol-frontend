@@ -119,7 +119,7 @@ const ChatbotForm = ({ isThinking, setIsThinking }: ChatbotFormProps) => {
                     >
                       close_small
                     </button>
-                    <button type="submit" className="material-symbols-outlined button" disabled={!inputValue || isThinking}>
+                    <button type="submit" className="material-symbols-outlined button" disabled={isThinking}>
                       send
                     </button>
                   </div>
