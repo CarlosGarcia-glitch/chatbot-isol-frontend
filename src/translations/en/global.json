@@ -2,7 +2,7 @@
   "greeting": "Hi! How can I assist you? ",
   "processing": "I am processing your file, I'll let you know once I'm done.",
   "header": "Agente ISOL",
-  "foil": "folio number",
+  "folio": "folio number",
   "menu": {
     "change_password": "Change password",
     "lang": "ENG",

@@ -3,7 +3,7 @@
   "processing": "Estoy procesando tu archivo, te avisaré cuando termine",
   "selected": "Seleccionado: ",
   "header": "ISOL Agente",
-  "foil": "No Folio",
+  "folio": "No Folio",
   "menu": {
     "change_password": "Cambiar contraseña",
     "lang": "ES",
