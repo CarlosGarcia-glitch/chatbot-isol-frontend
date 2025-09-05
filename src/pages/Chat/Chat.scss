@@ -76,6 +76,14 @@
     }
   }
 
+  .foil_number {
+    display: flex;
+    justify-content: end;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    margin-right: 1rem;
+  }
+
   .chat-body {
     height: 85vh;
     max-height: 440px;
@@ -201,7 +209,7 @@
       padding-bottom: 12rem;
     }
 
-    .chat-footer{
+    .chat-footer {
       border-top: $secondary-color 2px solid;
       padding: 12px 22px;
     }
