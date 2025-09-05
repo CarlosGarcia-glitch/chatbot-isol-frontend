@@ -34,6 +34,7 @@ const Chat = () => {
   const { setUser } = useAppContext();
   const navigate = useNavigate();
 
+  const [foilNumber, setFoilNumber] = useState('');
   const [loading, setLoading] = useState(true);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [isThinking, setIsThinking] = useState(false);
@@ -51,6 +52,9 @@ const Chat = () => {
     const initChat = async () => {
       try {
         const conversationId = localStorage.getItem('conversationId');
+        if (conversationId) {
+          setFoilNumber(conversationId);
+        }
 
         if (conversationId) {
           try {
@@ -140,6 +144,7 @@ const Chat = () => {
             <ChatbotIcon />
             <h2 className="logo-text">{t.header}</h2>
           </div>
+
           <div className="buttons-header">
             <Button
               id="basic-button"
@@ -192,6 +197,9 @@ const Chat = () => {
               </MenuItem>
             </Menu>
           </div>
+        </div>
+        <div className="foil_number">
+          <p>{`${t.foil}: ${foilNumber}`}</p>
         </div>
 
         {/* Chatbot Body */}
