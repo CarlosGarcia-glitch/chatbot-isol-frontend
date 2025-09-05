@@ -22,7 +22,7 @@ export const chatService = {
 
     localStorage.setItem('conversationId', conversationId);
 
-    return message as string;
+    return {message, conversationId} as {message: string, conversationId: string};
   },
 
   async getChatHistory() {

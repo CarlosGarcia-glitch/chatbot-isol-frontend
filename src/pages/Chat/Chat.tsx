@@ -34,7 +34,7 @@ const Chat = () => {
   const { setUser } = useAppContext();
   const navigate = useNavigate();
 
-  const [foilNumber, setFoilNumber] = useState('');
+  const [folioNumber, setFolioNumber] = useState('');
   const [loading, setLoading] = useState(true);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [isThinking, setIsThinking] = useState(false);
@@ -52,9 +52,6 @@ const Chat = () => {
     const initChat = async () => {
       try {
         const conversationId = localStorage.getItem('conversationId');
-        if (conversationId) {
-          setFoilNumber(conversationId);
-        }
 
         if (conversationId) {
           try {
@@ -63,6 +60,7 @@ const Chat = () => {
               const history = await chatService.getChatHistory();
               setChatHistory(history);
               setLoading(false);
+              setFolioNumber(conversationId);
               return;
             } else {
               localStorage.removeItem('conversationId');
@@ -73,7 +71,8 @@ const Chat = () => {
         }
 
         try {
-          const message = await chatService.startChat();
+          const { message, conversationId } = await chatService.startChat();
+          setFolioNumber(conversationId);
           setChatHistory([{ role: 'bot', message }]);
         } catch (error) {
           throw new Error();
@@ -198,8 +197,8 @@ const Chat = () => {
             </Menu>
           </div>
         </div>
-        <div className="foil_number">
-          <p>{`${t.foil}: ${foilNumber}`}</p>
+        <div className="folio_number">
+          {folioNumber && <p>{`${t.folio}: ${folioNumber}`}</p>}
         </div>
 
         {/* Chatbot Body */}
