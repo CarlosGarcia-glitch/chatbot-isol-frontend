@@ -198,13 +198,14 @@
 
 @media (max-width: 430px) {
   .chatbot-popup {
-    height: 100vh;
+    height: 100dvh;
+    max-height: 100%;
     width: 100vw;
     border-radius: 0;
 
     .chat-body {
       height: 100%;
-      max-height: none;
+      max-height: auto;
       padding: 12px 8px;
       padding-bottom: 12rem;
     }
