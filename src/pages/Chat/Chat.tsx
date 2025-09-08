@@ -45,52 +45,56 @@ const Chat = () => {
   const { setAlert } = useAlert();
   const open = Boolean(anchorEl);
 
-  useEffect(() => {
-    if (hasInitializedRef.current) return;
-    hasInitializedRef.current = true;
+  const initChat = async () => {
+    try {
+      const conversationId = localStorage.getItem('conversationId');
+      if (conversationId) {
+        setFoilNumber(conversationId);
+      }
 
-    const initChat = async () => {
+      if (conversationId) {
+        try {
+          const exists = await chatService.existsChat();
+          if (exists) {
+            const history = await chatService.getChatHistory();
+            setChatHistory(history);
+            setLoading(false);
+            return;
+          } else {
+            localStorage.removeItem('conversationId');
+          }
+        } catch (error) {
+          throw new Error();
+        }
+      }
+
       try {
+        const message = await chatService.startChat();
+        setChatHistory([{ role: 'bot', message }]);
         const conversationId = localStorage.getItem('conversationId');
         if (conversationId) {
           setFoilNumber(conversationId);
         }
-
-        if (conversationId) {
-          try {
-            const exists = await chatService.existsChat();
-            if (exists) {
-              const history = await chatService.getChatHistory();
-              setChatHistory(history);
-              setLoading(false);
-              return;
-            } else {
-              localStorage.removeItem('conversationId');
-            }
-          } catch (error) {
-            throw new Error();
-          }
-        }
-
-        try {
-          const message = await chatService.startChat();
-          setChatHistory([{ role: 'bot', message }]);
-        } catch (error) {
-          throw new Error();
-        }
       } catch (error) {
-        console.error('Error initializing chat:', error);
-        setAlert(true, 'error', t.errors.init_chat.alert);
-        setChatHistory([
-          {
-            role: 'bot',
-            message: t.errors.init_chat.chat,
-          },
-        ]);
-      } finally {
-        setLoading(false);
+        throw new Error();
       }
-    };
+    } catch (error) {
+      console.error('Error initializing chat:', error);
+      setAlert(true, 'error', t.errors.init_chat.alert);
+      setChatHistory([
+        {
+          role: 'bot',
+          message: t.errors.init_chat.chat,
+        },
+      ]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (hasInitializedRef.current) return;
+    hasInitializedRef.current = true;
 
     initChat();
   }, []);
@@ -145,6 +149,12 @@ const Chat = () => {
             <h2 className="logo-text">{t.header}</h2>
           </div>
 
+          <div className="new-chat">
+            <Button onClick={handleNewConversation}>
+              <p className="new-chat-text">{t.menu.new_conversation}</p>
+            </Button>
+          </div>
+
           <div className="buttons-header">
             <Button
               id="basic-button"
@@ -182,12 +192,6 @@ const Chat = () => {
                   <Language fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>{t.menu.lang}</ListItemText>
-              </MenuItem>
-              <MenuItem onClick={handleNewConversation}>
-                <ListItemIcon>
-                  <AddCircleOutline fontSize="small" />
-                </ListItemIcon>
-                <ListItemText>{t.menu.new_conversation}</ListItemText>
               </MenuItem>
               <MenuItem onClick={handleLogout}>
                 <ListItemIcon>
