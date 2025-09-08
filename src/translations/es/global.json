@@ -5,9 +5,11 @@
   "header": "ISOL Agente",
   "folio": "No Folio",
   "menu": {
+    "chat": "Chat",
     "change_password": "Cambiar contraseña",
     "lang": "ES",
     "new_conversation": "Nuevo chat",
+    "recovery": "Recuperar Chat",
     "logout": "Cerrar sesión"
   },
   "input": {
@@ -50,7 +52,7 @@
       "old_password": "Contraseña actual",
       "confirm_password": "Confirmar contraseña"
     },
-    "button": { "save": "Guardar", "loading": "Guardando" }
+    "button": { "save": "Guardar", "loading": "Guardando", "send": "Enviar" }
   },
   "errors": {
     "ask_agent": {
@@ -60,6 +62,9 @@
     "init_chat": {
       "chat": "Hubo un error al intentar iniciar el chat. Por favor contacta a tu administrador o intenta de nuevo más tarde.",
       "alert": "Error al intentar iniciar el chat."
-    }
-  }
+    },
+    "folio": "Folio no encontrado",
+    "required": "Folio requerido"
+  },
+  "button": { "save": "Guardar", "loading": "Guardando", "send": "Enviar" }
 }
