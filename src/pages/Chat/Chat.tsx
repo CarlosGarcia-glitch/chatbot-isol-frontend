@@ -144,6 +144,12 @@ const Chat = () => {
             <h2 className="logo-text">{t.header}</h2>
           </div>
 
+          <div className="new-chat">
+            <Button onClick={handleNewConversation}>
+              <p className="new-chat-text">{t.menu.new_conversation}</p>
+            </Button>
+          </div>
+
           <div className="buttons-header">
             <Button
               id="basic-button"
@@ -182,12 +188,7 @@ const Chat = () => {
                 </ListItemIcon>
                 <ListItemText>{t.menu.lang}</ListItemText>
               </MenuItem>
-              <MenuItem onClick={handleNewConversation}>
-                <ListItemIcon>
-                  <AddCircleOutline fontSize="small" />
-                </ListItemIcon>
-                <ListItemText>{t.menu.new_conversation}</ListItemText>
-              </MenuItem>
+
               <MenuItem onClick={handleLogout}>
                 <ListItemIcon>
                   <Logout fontSize="small" />
