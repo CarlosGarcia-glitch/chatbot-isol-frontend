@@ -45,7 +45,6 @@ const Login = (props: Props) => {
         setLoading(true);
         try {
           const resp = await AuthService.login(vals.email, vals.password);
-          console.log('resp', resp);
           setUser(resp?.user_info);
           localStorage.setItem('token', resp?.access_token);
           setAlert(true, 'success', t.login.alerts.success.login);
