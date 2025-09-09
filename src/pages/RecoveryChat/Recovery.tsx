@@ -70,7 +70,7 @@ const Recovery = () => {
   const handleSubmit = async (values: { folio: string }) => {
     try {
       const exists = await chatService.existsChat(values.folio);
-      console.log(exists);
+
       if (exists) {
         localStorage.setItem('conversationId', values.folio);
         navigate('/chat');
@@ -153,26 +153,28 @@ const Recovery = () => {
         </div>
 
         <div className="chat-body">
-          <Formik
-            initialValues={{ folio: '' }}
-            validationSchema={validationSchema}
-            onSubmit={handleSubmit}
-          >
-            {({ errors, touched }) => (
-              <Form className="recovery-form">
-                <div>
-                  <label htmlFor="folio">{t.folio}</label>
-                  <Field id="folio" name="folio" type="text" />
-                  {errors.folio && touched.folio && (
-                    <div className="error">{errors.folio}</div>
-                  )}
-                </div>
-                <Button type="submit" variant="contained" color="primary">
-                  {t.button.send}
-                </Button>
-              </Form>
-            )}
-          </Formik>
+          <div className="recovery-body">
+            <Formik
+              initialValues={{ folio: '' }}
+              validationSchema={validationSchema}
+              onSubmit={handleSubmit}
+            >
+              {({ errors, touched }) => (
+                <Form className="recovery-form">
+                  <div>
+                    <label htmlFor="folio">{t.folio}</label>
+                    <Field id="folio" name="folio" type="text" />
+                    {errors.folio && touched.folio && (
+                      <div className="error">{errors.folio}</div>
+                    )}
+                  </div>
+                  <Button type="submit" variant="contained" color="primary">
+                    {t.button.send}
+                  </Button>
+                </Form>
+              )}
+            </Formik>
+          </div>
         </div>
       </div>
     </div>
