@@ -26,7 +26,7 @@ import AuthService from '@/services/authService';
 import { chatService } from '@/services/chatService';
 import ChatbotIcon from '../../components/icons/ChatbotIcon';
 
-import './_Recovery.module.scss';
+import '../Chat/Chat.scss';
 
 const Recovery = () => {
   const t = useTranslations();
