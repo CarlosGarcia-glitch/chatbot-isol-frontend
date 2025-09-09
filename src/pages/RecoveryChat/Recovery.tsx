@@ -69,18 +69,16 @@ const Recovery = () => {
 
   const handleSubmit = async (values: { folio: string }) => {
     try {
-      localStorage.setItem('conversationId', values.folio);
-
-      const exists = await chatService.existsChat();
+      const exists = await chatService.existsChat(values.folio);
+      console.log(exists);
       if (exists) {
+        localStorage.setItem('conversationId', values.folio);
         navigate('/chat');
       } else {
         setAlert(true, 'error', t.errors.folio);
-        localStorage.removeItem('conversationId');
       }
     } catch (error) {
       setAlert(true, 'error', t.errors.folio);
-      localStorage.removeItem('conversationId');
     }
   };
 

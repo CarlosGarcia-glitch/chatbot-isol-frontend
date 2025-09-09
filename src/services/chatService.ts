@@ -6,12 +6,12 @@ const getConversationId = (): string | null => {
 };
 
 export const chatService = {
-  async existsChat() {
-    const conversationId = getConversationId();
-    if (!conversationId) return false;
+  async existsChat(conversationId?: string) {
+    const id = conversationId || getConversationId();
+    if (!id) return false;
 
     const response = await api.get<boolean>('/chat/exists', {
-      params: { conversationId },
+      params: { conversationId: id },
     });
     return response.data;
   },
@@ -22,7 +22,10 @@ export const chatService = {
 
     localStorage.setItem('conversationId', conversationId);
 
-    return {message, conversationId} as {message: string, conversationId: string};
+    return { message, conversationId } as {
+      message: string;
+      conversationId: string;
+    };
   },
 
   async getChatHistory() {
