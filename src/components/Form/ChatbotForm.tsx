@@ -3,9 +3,11 @@ import {
   useAlert,
   useAppContext,
   useTranslations,
-} from '../contexts/AppContext';
+} from '../../contexts/AppContext';
 import { chatService } from '@/services/chatService';
 import { TextField } from '@mui/material';
+
+import './Form.scss'
 
 type ChatbotFormProps = {
   isThinking: boolean;
