@@ -1,6 +1,7 @@
 .container {
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -266,6 +267,11 @@
 }
 
 @media (max-width: 430px) {
+  .container {
+    height: auto;
+    min-height: auto;
+  }
+
   .chatbot-popup {
     height: 100dvh;
     max-height: 100%;
