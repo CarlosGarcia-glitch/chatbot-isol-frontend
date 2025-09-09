@@ -28,7 +28,7 @@ import { useNavigate } from 'react-router-dom';
 import ChatbotForm from '../../components/Form/ChatbotForm';
 import ChatbotMessage, { IChat } from '../../components/Message/ChatbotMessage';
 import ChatbotIcon from '../../components/icons/ChatbotIcon';
-import './Chat.scss';
+import Styles from './_Chat.module.scss';
 
 const Chat = () => {
   const t = useTranslations();
@@ -136,89 +136,93 @@ const Chat = () => {
   };
 
   return (
-    <div className="container">
-      <div className="chatbot-popup">
+    <div className={Styles.container}>
+      <div className={Styles.chat}>
         {/* Chatbot Header */}
-        <div className="chat-header">
-          <div className="header-info">
-            <ChatbotIcon />
-            <h2 className="logo-text">{t.header}</h2>
-          </div>
+        <header className={Styles.chat_header}>
+          <section className={Styles.chat_header_top}>
+            <div className={Styles.header_info}>
+              <ChatbotIcon />
+              <h2 className={Styles.logo_text}>{t.header}</h2>
+            </div>
 
-          <div className="new-chat">
-            <Button onClick={handleNewConversation}>
-              <p className="new-chat-text">{t.menu.new_conversation}</p>
-            </Button>
-          </div>
+            <div className={Styles.new_chat}>
+              <Button onClick={handleNewConversation}>
+                <p className={Styles.new_chat_text}>
+                  {t.menu.new_conversation}
+                </p>
+              </Button>
+            </div>
 
-          <div className="buttons-header">
-            <Button
-              id="basic-button"
-              aria-controls={open ? 'basic-menu' : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? 'true' : undefined}
-              onClick={handleClick}
-            >
-              <MenuIcon />
-            </Button>
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              slotProps={{
-                list: {
-                  'aria-labelledby': 'basic-button',
-                },
-              }}
-            >
-              <MenuItem
-                onClick={() => {
-                  handleClose();
-                  navigate('/change-password');
+            <div className={Styles.buttons_header}>
+              <Button
+                id="basic-button"
+                aria-controls={open ? 'basic-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                onClick={handleClick}
+              >
+                <MenuIcon />
+              </Button>
+              <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                slotProps={{
+                  list: {
+                    'aria-labelledby': 'basic-button',
+                  },
                 }}
               >
-                <ListItemIcon>
-                  <LockOutline fontSize="small" />
-                </ListItemIcon>
-                <ListItemText>{t.menu.change_password}</ListItemText>
-              </MenuItem>
-              <MenuItem onClick={toggleLanguage}>
-                <ListItemIcon>
-                  <Language fontSize="small" />
-                </ListItemIcon>
-                <ListItemText>{t.menu.lang}</ListItemText>
-              </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    handleClose();
+                    navigate('/change-password');
+                  }}
+                >
+                  <ListItemIcon>
+                    <LockOutline fontSize="small" />
+                  </ListItemIcon>
+                  <ListItemText>{t.menu.change_password}</ListItemText>
+                </MenuItem>
+                <MenuItem onClick={toggleLanguage}>
+                  <ListItemIcon>
+                    <Language fontSize="small" />
+                  </ListItemIcon>
+                  <ListItemText>{t.menu.lang}</ListItemText>
+                </MenuItem>
 
-              <MenuItem
-                onClick={() => {
-                  handleClose();
-                  navigate('/recovery');
-                }}
-              >
-                <ListItemIcon>
-                  <FindInPageIcon fontSize="small" />
-                </ListItemIcon>
-                <ListItemText>{t.menu.recovery}</ListItemText>
-              </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    handleClose();
+                    navigate('/recovery');
+                  }}
+                >
+                  <ListItemIcon>
+                    <FindInPageIcon fontSize="small" />
+                  </ListItemIcon>
+                  <ListItemText>{t.menu.recovery}</ListItemText>
+                </MenuItem>
 
-              <MenuItem onClick={handleLogout}>
-                <ListItemIcon>
-                  <Logout fontSize="small" />
-                </ListItemIcon>
-                <ListItemText>{t.menu.logout}</ListItemText>
-              </MenuItem>
-            </Menu>
+                <MenuItem onClick={handleLogout}>
+                  <ListItemIcon>
+                    <Logout fontSize="small" />
+                  </ListItemIcon>
+                  <ListItemText>{t.menu.logout}</ListItemText>
+                </MenuItem>
+              </Menu>
+            </div>
+          </section>
+          <div className={Styles.folio_number}>
+            {folioNumber && <p>{`${t.folio}: ${folioNumber}`}</p>}
           </div>
-        </div>
-        <div className="folio_number">
-          {folioNumber && <p>{`${t.folio}: ${folioNumber}`}</p>}
-        </div>
+        </header>
 
         {/* Chatbot Body */}
-        <div className="chat-body" ref={chatBodyRef}>
+        <div className={Styles.chat_body} ref={chatBodyRef}>
           {loading ? (
-            <div className="chat-loading">
+            <div className={Styles.chat_loading}>
               <CircularProgress />
             </div>
           ) : (
@@ -237,7 +241,7 @@ const Chat = () => {
         </div>
 
         {/* Chatbot Footer */}
-        <div className="chat-footer">
+        <div className={Styles.chat_footer}>
           <ChatbotForm isThinking={isThinking} setIsThinking={setIsThinking} />
         </div>
       </div>
