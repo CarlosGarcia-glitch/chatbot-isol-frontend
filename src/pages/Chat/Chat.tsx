@@ -25,8 +25,8 @@ import {
 } from '@mui/material';
 import FindInPageIcon from '@mui/icons-material/FindInPage';
 import { useNavigate } from 'react-router-dom';
-import ChatbotForm from '../../components/ChatbotForm';
-import ChatbotMessage, { IChat } from '../../components/ChatbotMessage';
+import ChatbotForm from '../../components/Form/ChatbotForm';
+import ChatbotMessage, { IChat } from '../../components/Message/ChatbotMessage';
 import ChatbotIcon from '../../components/icons/ChatbotIcon';
 import './Chat.scss';
 
