@@ -29,6 +29,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
+import FindInPageIcon from '@mui/icons-material/FindInPage';
 import { FormikValues, useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import ChatbotIcon from '../../components/icons/ChatbotIcon';
@@ -156,6 +157,17 @@ const Chat = () => {
                   <Language fontSize="small" />
                 </ListItemIcon>
                 <ListItemText>{t.menu.lang}</ListItemText>
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  handleClose();
+                  navigate('/recovery');
+                }}
+              >
+                <ListItemIcon>
+                  <FindInPageIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText>{t.menu.recovery}</ListItemText>
               </MenuItem>
               <MenuItem onClick={handleLogout}>
                 <ListItemIcon>

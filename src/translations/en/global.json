@@ -4,9 +4,11 @@
   "header": "Agente ISOL",
   "folio": "folio number",
   "menu": {
+    "chat": "Chat",
     "change_password": "Change password",
     "lang": "ENG",
     "new_conversation": "New chat",
+    "recovery": "Recovery Chat",
     "logout": "Logout"
   },
   "selected": "Selected: ",
@@ -51,7 +53,7 @@
       "confirm_password": "Confirm password"
     },
 
-    "button": { "save": "Save", "loading": "Loading" }
+    "button": { "save": "Save", "loading": "Loading", "send": "Send" }
   },
   "errors": {
     "ask_agent": {
@@ -61,6 +63,9 @@
     "init_chat": {
       "chat": "There was an error trying to start the chat. Please contact your administrator or try again later.",
       "alert": "Error trying to start the chat."
-    }
-  }
+    },
+    "folio": "Folio Not Found",
+    "required": "Folio required"
+  },
+  "button": { "save": "Save", "loading": "Loading", "send": "Send" }
 }
