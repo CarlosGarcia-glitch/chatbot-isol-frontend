@@ -146,74 +146,77 @@ const Chat = () => {
               <h2 className={Styles.logo_text}>{t.header}</h2>
             </div>
 
-            <div className={Styles.new_chat}>
-              <Button onClick={handleNewConversation}>
-                <p className={Styles.new_chat_text}>
-                  {t.menu.new_conversation}
-                </p>
-              </Button>
-            </div>
+            <div className={Styles.new_chat_container}>
+              <div className={Styles.new_chat}>
+                <Button onClick={handleNewConversation}>
+                  <p className={Styles.new_chat_text}>
+                    {t.menu.new_conversation}
+                  </p>
+                </Button>
+              </div>
 
-            <div className={Styles.buttons_header}>
-              <Button
-                id="basic-button"
-                aria-controls={open ? 'basic-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-                onClick={handleClick}
-              >
-                <MenuIcon />
-              </Button>
-              <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                slotProps={{
-                  list: {
-                    'aria-labelledby': 'basic-button',
-                  },
-                }}
-              >
-                <MenuItem
-                  onClick={() => {
-                    handleClose();
-                    navigate('/change-password');
+              <div className={Styles.buttons_header}>
+                <Button
+                  id="basic-button"
+                  aria-controls={open ? 'basic-menu' : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? 'true' : undefined}
+                  onClick={handleClick}
+                >
+                  <MenuIcon />
+                </Button>
+                <Menu
+                  id="basic-menu"
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  slotProps={{
+                    list: {
+                      'aria-labelledby': 'basic-button',
+                    },
                   }}
                 >
-                  <ListItemIcon>
-                    <LockOutline fontSize="small" />
-                  </ListItemIcon>
-                  <ListItemText>{t.menu.change_password}</ListItemText>
-                </MenuItem>
-                <MenuItem onClick={toggleLanguage}>
-                  <ListItemIcon>
-                    <Language fontSize="small" />
-                  </ListItemIcon>
-                  <ListItemText>{t.menu.lang}</ListItemText>
-                </MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      handleClose();
+                      navigate('/change-password');
+                    }}
+                  >
+                    <ListItemIcon>
+                      <LockOutline fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText>{t.menu.change_password}</ListItemText>
+                  </MenuItem>
+                  <MenuItem onClick={toggleLanguage}>
+                    <ListItemIcon>
+                      <Language fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText>{t.menu.lang}</ListItemText>
+                  </MenuItem>
 
-                <MenuItem
-                  onClick={() => {
-                    handleClose();
-                    navigate('/recovery');
-                  }}
-                >
-                  <ListItemIcon>
-                    <FindInPageIcon fontSize="small" />
-                  </ListItemIcon>
-                  <ListItemText>{t.menu.recovery}</ListItemText>
-                </MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      handleClose();
+                      navigate('/recovery');
+                    }}
+                  >
+                    <ListItemIcon>
+                      <FindInPageIcon fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText>{t.menu.recovery}</ListItemText>
+                  </MenuItem>
 
-                <MenuItem onClick={handleLogout}>
-                  <ListItemIcon>
-                    <Logout fontSize="small" />
-                  </ListItemIcon>
-                  <ListItemText>{t.menu.logout}</ListItemText>
-                </MenuItem>
-              </Menu>
+                  <MenuItem onClick={handleLogout}>
+                    <ListItemIcon>
+                      <Logout fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText>{t.menu.logout}</ListItemText>
+                  </MenuItem>
+                </Menu>
+              </div>
             </div>
           </section>
+
           <div className={Styles.folio_number}>
             {folioNumber && <p>{`${t.folio}: ${folioNumber}`}</p>}
           </div>
