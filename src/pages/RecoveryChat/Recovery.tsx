@@ -154,26 +154,31 @@ const Recovery = () => {
 
         <div className="chat-body">
           <div className="recovery-body">
-            <Formik
-              initialValues={{ folio: '' }}
-              validationSchema={validationSchema}
-              onSubmit={handleSubmit}
-            >
-              {({ errors, touched }) => (
-                <Form className="recovery-form">
-                  <div>
-                    <label htmlFor="folio">{t.folio}</label>
-                    <Field id="folio" name="folio" type="text" />
-                    {errors.folio && touched.folio && (
-                      <div className="error">{errors.folio}</div>
-                    )}
-                  </div>
-                  <Button type="submit" variant="contained" color="primary">
-                    {t.button.send}
-                  </Button>
-                </Form>
-              )}
-            </Formik>
+            <div>
+              <p>{t.folio_welcome}</p>
+            </div>
+            <div>
+              <Formik
+                initialValues={{ folio: '' }}
+                validationSchema={validationSchema}
+                onSubmit={handleSubmit}
+              >
+                {({ errors, touched }) => (
+                  <Form className="recovery-form">
+                    <div>
+                      <label htmlFor="folio">{t.folio}</label>
+                      <Field id="folio" name="folio" type="text" />
+                      {errors.folio && touched.folio && (
+                        <div className="error">{errors.folio}</div>
+                      )}
+                    </div>
+                    <Button type="submit" variant="contained" color="primary">
+                      {t.button.send}
+                    </Button>
+                  </Form>
+                )}
+              </Formik>
+            </div>
           </div>
         </div>
       </div>

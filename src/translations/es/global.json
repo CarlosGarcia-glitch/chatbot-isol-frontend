@@ -4,6 +4,7 @@
   "selected": "Seleccionado: ",
   "header": "ISOL Agente",
   "folio": "No Folio",
+  "folio_welcome": "Cada chat en nuestra app genera un número de folio exclusivo, tu llave para acceder al historial completo directamente desde la plataforma. Ingresa el folio a continuación para cargar la conversación al instante.",
   "menu": {
     "chat": "Chat",
     "change_password": "Cambiar contraseña",
