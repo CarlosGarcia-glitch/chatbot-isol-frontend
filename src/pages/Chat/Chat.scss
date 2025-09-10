@@ -151,6 +151,12 @@
     }
 
     .recovery-body {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      justify-content: center;
+      align-items: center;
+
       .recovery-form {
         width: 100%;
         display: flex;
