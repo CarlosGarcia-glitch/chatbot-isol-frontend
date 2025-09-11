@@ -1,0 +1,101 @@
+@use '@/assets/scss/variables.scss' as vars;
+
+// _ChatHeader.module.scss
+.chat_header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 22px;
+  background: vars.$primary-color;
+  color: vars.$secondary-color;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.chat_header_top {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.new_chat_container {
+  display: flex;
+  align-items: center;
+}
+
+.new_chat {
+  color: vars.$secondary-color;
+  margin-right: -1rem;
+  button {
+    &:hover {
+      background: none;
+      box-shadow: none;
+    }
+  }
+
+  .new_chat_text {
+    font-size: 0.7rem;
+    color: vars.$secondary-color;
+    text-decoration: underline;
+    line-height: 0;
+  }
+}
+
+.buttons_header {
+  display: flex;
+}
+
+.header_info {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  svg {
+    height: 35px;
+    width: 35px;
+    padding: 6px;
+    flex-shrink: 0;
+    fill: var(--primary-color);
+    background: var(--contrast);
+    border-radius: 50%;
+  }
+
+  .logo_text {
+    color: var(--contrast);
+    font-size: 1.31rem;
+    font-weight: 600;
+  }
+}
+
+// Estilos para los botones
+.buttons_header button {
+  height: 40px;
+  width: 40px;
+  border: none;
+  outline: none;
+  color: var(--contrast);
+  cursor: pointer;
+  font-size: 1.9rem;
+  border-radius: 50%;
+  transition: 0.2s ease;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: var(--primary-color-hover);
+  }
+}
+
+.folio_number {
+  display: flex;
+  justify-content: end;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  margin-right: 1rem;
+  color: var(--contrast);
+  font-size: 0.9rem;
+}
