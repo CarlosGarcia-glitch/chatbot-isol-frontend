@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import ChatHeader from '@/components/Header/ChatHeader';
 import {
   useAlert,
   useAppContext,
@@ -115,69 +116,8 @@ const Chat = () => {
     <div className={Styles.container}>
       <div className={Styles.card}>
         {/* Chatbot Header */}
-        <div className={Styles.card_header}>
-          <div className={Styles.header_info}>
-            <ChatbotIcon />
-            <h2 className={Styles.logo_text}>{userName}</h2>
-          </div>
-          <div className={Styles.buttons_header}>
-            <Button
-              id="basic-button"
-              aria-controls={openMenu ? 'basic-menu' : undefined}
-              aria-haspopup="true"
-              aria-expanded={openMenu ? 'true' : undefined}
-              onClick={handleClick}
-            >
-              <MenuIcon />
-            </Button>
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorElMenu}
-              open={openMenu}
-              onClose={handleClose}
-              slotProps={{
-                list: {
-                  'aria-labelledby': 'basic-button',
-                },
-              }}
-            >
-              <MenuItem
-                onClick={() => {
-                  handleClose();
-                  navigate('/chat');
-                }}
-              >
-                <ListItemIcon>
-                  <Home fontSize="small" />
-                </ListItemIcon>
-                <ListItemText>Chat</ListItemText>
-              </MenuItem>
-              <MenuItem onClick={toggleLanguage}>
-                <ListItemIcon>
-                  <Language fontSize="small" />
-                </ListItemIcon>
-                <ListItemText>{t.menu.lang}</ListItemText>
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  handleClose();
-                  navigate('/recovery');
-                }}
-              >
-                <ListItemIcon>
-                  <FindInPageIcon fontSize="small" />
-                </ListItemIcon>
-                <ListItemText>{t.menu.recovery}</ListItemText>
-              </MenuItem>
-              <MenuItem onClick={handleLogout}>
-                <ListItemIcon>
-                  <Logout fontSize="small" />
-                </ListItemIcon>
-                <ListItemText>{t.menu.logout}</ListItemText>
-              </MenuItem>
-            </Menu>
-          </div>
-        </div>
+        <ChatHeader />
+
         {/* Chatbot Body */}
         <div className={Styles.card_body} ref={chatBodyRef}>
           <TextField

@@ -86,19 +86,11 @@ const Chat = () => {
 
   const lastBotIndex = chatHistory?.map((m) => m.role).lastIndexOf('bot');
 
-  const handleNewConversation = () => {
-    localStorage.removeItem('conversationId');
-    window.location.reload();
-  };
-
   return (
     <div className={Styles.container}>
       <div className={Styles.chat}>
         {/* Chatbot Header */}
-        <ChatHeader
-          folioNumber={folioNumber}
-          onNewConversation={handleNewConversation}
-        />
+        <ChatHeader folioNumber={folioNumber} />
 
         {/* Chatbot Body */}
         <div className={Styles.chat_body} ref={chatBodyRef}>
