@@ -3,7 +3,7 @@
   "processing": "I am processing your file, I'll let you know once I'm done.",
   "header": "Agente ISOL",
   "folio": "folio number",
-  "folio_welcome": "Every chat within our app generates a unique reference number, your key to accessing the entire history directly on the platform. Enter the folio below to load the conversation instantly.",
+  "folio_welcome": "Enter the folio below to load the conversation instantly.",
   "menu": {
     "chat": "Chat",
     "change_password": "Change password",
