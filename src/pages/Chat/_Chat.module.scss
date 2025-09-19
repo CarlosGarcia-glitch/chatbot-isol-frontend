@@ -6,88 +6,6 @@
 
     background: white;
 
-    &_header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-
-      &_top {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        padding: 16px 22px;
-        align-items: center;
-        justify-content: space-between;
-        background: $primary-color;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-
-        .new_chat_container {
-          display: flex;
-          gap: 0.2rem;
-        }
-
-        .new_chat {
-          button {
-            &:hover {
-              background: none;
-              box-shadow: none;
-            }
-          }
-          .new_chat_text {
-            font-size: 0.7rem;
-            line-height: 0;
-            padding: 0;
-            margin: 0;
-            color: $secondary-color;
-            text-decoration: underline;
-          }
-        }
-
-        .buttons_header {
-          display: flex;
-        }
-
-        .header_info {
-          display: flex;
-          gap: 8px;
-          align-items: center;
-
-          .logo_text {
-            color: $contrast;
-            font-size: 1.31rem;
-            font-weight: 600f;
-          }
-        }
-
-        button {
-          height: 40px;
-          width: 40px;
-          border: none;
-          outline: none;
-          color: $contrast;
-          cursor: pointer;
-          font-size: 1.9rem;
-          padding-top: 2px;
-          border-radius: 50%;
-          transition: 2ms ease;
-          background: none;
-        }
-
-        button:hover {
-          background: $primary-color-hover;
-        }
-      }
-
-      .folio_number {
-        display: flex;
-        justify-content: end;
-        padding: 0.5rem 1rem;
-        margin-right: 1rem;
-        width: 100%;
-        background: white;
-      }
-    }
-
     &_body {
       padding: 1rem;
       padding-top: 7rem;
@@ -135,20 +53,6 @@
         0 0 128px 0 rgba(0, 0, 0, 0.1),
         0 32px 64px,
         -48px rgba(0, 0, 0, 0.5);
-
-      &_header {
-        position: relative;
-
-        &_top {
-          border-top-left-radius: $border-radius;
-          border-top-right-radius: $border-radius;
-        }
-
-        .folio_number {
-          width: auto;
-          background: none;
-        }
-      }
 
       &_body {
         padding: 1rem;
