@@ -1,11 +1,6 @@
-import {
-  Language,
-  LockOutline,
-  Logout,
-  Menu as MenuIcon,
-} from '@mui/icons-material';
+import { LockOutline, Logout } from '@mui/icons-material';
+import HistoryIcon from '@mui/icons-material/History';
 import HomeIcon from '@mui/icons-material/Home';
-import FindInPageIcon from '@mui/icons-material/FindInPage';
 
 export interface MenuItemConfig {
   key: string;
@@ -31,17 +26,17 @@ export const menuItemsConfig: MenuItemConfig[] = [
     path: '/change-password',
     visibleOn: ['/chat', '/recovery'],
   },
-  {
+  /* {
     key: 'language',
     label: 'lang',
     icon: <Language fontSize="small" />,
     path: '',
     visibleOn: ['*'],
-  },
+  }, */
   {
     key: 'recovery',
     label: 'recovery',
-    icon: <FindInPageIcon fontSize="small" />,
+    icon: <HistoryIcon fontSize="small" />,
     path: '/recovery',
     visibleOn: ['/chat', '/change-password'],
   },
