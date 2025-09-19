@@ -1,7 +1,6 @@
-import Styles from './_Account.module.scss';
-import ChatHeader from '@/components/Header/ChatHeader';
 import ChangePasswordForm from '@/components/ChangePasswordForm/ChangePasswordForm';
-import ChatFooter from '@/components/ChatFooter/ChatFooter';
+import ChatHeader from '@/components/Header/ChatHeader';
+import Styles from './_Account.module.scss';
 
 const ChatPage = () => {
   return (
