@@ -4,6 +4,7 @@
   "header": "Agente ISOL",
   "folio": "folio number",
   "folio_welcome": "Enter the folio below to load the conversation.",
+  "text_copied": "Text copied",
   "menu": {
     "chat": "Chat",
     "change_password": "Change password",

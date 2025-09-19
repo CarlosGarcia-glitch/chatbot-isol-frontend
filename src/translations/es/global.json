@@ -5,6 +5,7 @@
   "header": "ISOL Agente",
   "folio": "No Folio",
   "folio_welcome": "Ingresa el folio a continuación para cargar la conversación.",
+  "text_copied": "Texto copiado",
   "menu": {
     "chat": "Chat",
     "change_password": "Cambiar contraseña",

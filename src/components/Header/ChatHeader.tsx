@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useTranslations, useAppContext } from '../../contexts/AppContext';
+import {
+  useTranslations,
+  useAppContext,
+  useAlert,
+} from '../../contexts/AppContext';
 import AuthService from '@/services/authService';
 import {
   Button,
@@ -10,6 +14,7 @@ import {
   MenuItem,
 } from '@mui/material';
 import { Menu as MenuIcon } from '@mui/icons-material';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ChatbotIcon from '../icons/ChatbotIcon';
 import Styles from './_ChatHeader.module.scss';
 import { menuItemsConfig, MenuItemConfig } from './menuConfig';
@@ -31,6 +36,7 @@ const ChatHeader = ({ folioNumber }: ChatHeaderProps) => {
   const location = useLocation();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const { setAlert } = useAlert();
 
   const toggleLanguage = () => {
     const newLang = language === 'en' ? 'es' : 'en';
@@ -74,6 +80,15 @@ const ChatHeader = ({ folioNumber }: ChatHeaderProps) => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleCopyClick = async () => {
+    try {
+      await navigator.clipboard.writeText(folioNumber ?? '');
+      setAlert(true, 'success', t.text_copied);
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
   };
 
   const shouldShowNewChat = location.pathname === '/chat';
@@ -131,7 +146,10 @@ const ChatHeader = ({ folioNumber }: ChatHeaderProps) => {
         </section>
         {shouldShowNewChat && folioNumber && (
           <div className={Styles.header_bottom}>
-            <p>{`${t.folio}: ${folioNumber}`}</p>
+            <p onClick={handleCopyClick}>
+              {`${t.folio}: ${folioNumber}`}{' '}
+              <ContentCopyIcon fontSize="inherit" />
+            </p>
           </div>
         )}
       </header>

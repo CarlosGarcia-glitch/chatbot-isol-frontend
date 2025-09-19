@@ -24,7 +24,7 @@
         font-weight: 600f;
       }
     }
-    
+
     &_menu {
       display: flex;
       flex-direction: row;
@@ -34,7 +34,7 @@
         text-decoration: underline;
       }
 
-      .menu_button:hover{
+      .menu_button:hover {
         background: $primary-color-hover;
         transition: 50ms ease-in-out;
       }
@@ -49,6 +49,10 @@
     width: 100%;
     background: white;
     font-size: 0.7rem;
+
+    p {
+      cursor: pointer;
+    }
   }
 }
 
