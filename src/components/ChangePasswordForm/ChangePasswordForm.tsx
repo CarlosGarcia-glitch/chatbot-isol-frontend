@@ -53,10 +53,15 @@ const ChangePasswordForm = () => {
   return (
     <>
       <div className={Styles.card_body}>
+        <p className={Styles.description}>
+          {t.change_password.description}
+        </p>
+
         <PasswordField
           id="old_password"
           name="old_password"
-          placeholder={t.change_password.labels.old_password}
+          label={t.change_password.labels.old_password}
+          variant='outlined'
           value={values.old_password}
           error={errors.old_password as string}
           touched={Boolean(touched.old_password)}
@@ -70,7 +75,8 @@ const ChangePasswordForm = () => {
         <PasswordField
           id="new_password"
           name="new_password"
-          placeholder={t.change_password.labels.new_password}
+          label={t.change_password.labels.new_password}
+          variant='outlined'
           value={values.new_password}
           error={errors.new_password as string}
           touched={Boolean(touched.new_password)}
@@ -84,7 +90,8 @@ const ChangePasswordForm = () => {
         <PasswordField
           id="confirm_password"
           name="confirm_password"
-          placeholder={t.change_password.labels.confirm_password}
+          label={t.change_password.labels.confirm_password}
+          variant='outlined'
           value={values.confirm_password}
           error={errors.confirm_password as string}
           touched={Boolean(touched.confirm_password)}
