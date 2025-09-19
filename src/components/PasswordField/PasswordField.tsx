@@ -4,7 +4,7 @@ import { VisibilityOffOutlined, VisibilityOutlined } from '@mui/icons-material';
 interface PasswordFieldProps {
   id: string;
   name: string;
-  placeholder: string;
+  placeholder?: string;
   value: string;
   error?: string;
   touched?: boolean;
@@ -14,35 +14,25 @@ interface PasswordFieldProps {
   onChange: (e: React.ChangeEvent<any>) => void;
   onBlur: (e: React.FocusEvent<any>) => void;
   onEnter: () => void;
+  variant?: 'outlined' | 'filled' | 'standard';
+  label?: string;
 }
 
 const PasswordField = ({
-  id,
-  name,
-  placeholder,
-  value,
   error,
   touched,
   show,
   setShow,
-  disabled,
-  onChange,
-  onBlur,
   onEnter,
+  ...props
 }: PasswordFieldProps) => {
   return (
     <TextField
-      id={id}
-      name={name}
-      placeholder={placeholder}
+      {...props}
       type={show ? 'text' : 'password'}
-      value={value}
       error={touched && Boolean(error)}
       helperText={touched && error ? error : undefined}
-      onBlur={onBlur}
-      onChange={onChange}
       onKeyDown={(e) => e.key === 'Enter' && onEnter()}
-      disabled={disabled}
       slotProps={{
         input: {
           endAdornment: (
