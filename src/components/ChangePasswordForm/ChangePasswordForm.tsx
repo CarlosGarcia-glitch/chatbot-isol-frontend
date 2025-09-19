@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useFormik, FormikValues } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import { CircularProgress } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 import { Save } from '@mui/icons-material';
 
 import { useTranslations, useAlert } from '../../contexts/AppContext';
@@ -10,7 +10,6 @@ import { changePasswordSchema } from '@/utils/schemas/validationSchema';
 
 import Styles from '@/pages/Account/_Account.module.scss';
 import PasswordField from '../PasswordField/PasswordField';
-import ChatFooter from '../ChatFooter/ChatFooter';
 
 const ChangePasswordForm = () => {
   const t = useTranslations();
@@ -96,8 +95,24 @@ const ChangePasswordForm = () => {
           onBlur={handleBlur}
           onEnter={handleSubmit}
         />
+        <Button
+          disabled={loading}
+          variant="contained"
+          color="primary"
+          startIcon={
+            loading ? (
+              <CircularProgress size="1.5rem" style={{ color: '#C0C0C0' }} />
+            ) : (
+              <Save />
+            )
+          }
+          onClick={() => handleSubmit()}
+        >
+          {loading
+            ? t.change_password.button.loading
+            : t.change_password.button.save}
+        </Button>
       </div>
-      <ChatFooter loading={loading} onSave={handleSubmit} />
     </>
   );
 };
