@@ -5,6 +5,7 @@
   "header": "ISOL Agente",
   "folio": "No Folio",
   "folio_welcome": "Ingresa el folio a continuación para cargar la conversación.",
+  "text_copied": "Texto copiado",
   "menu": {
     "chat": "Chat",
     "change_password": "Cambiar contraseña",
@@ -42,6 +43,7 @@
     }
   },
   "change_password": {
+    "description": "La nueva contraseña debe incluir al menos una letra mayúscula, al menos una minúscula, al menos un numero y al menos un caracter especial, sin puntos ni comas.",
     "validations": {
       "no_password_match": "La nueva contraseña y confirmar contraseña no coinciden.",
       "no_valid": "La contraseña debe contener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial."

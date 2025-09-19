@@ -5,20 +5,17 @@ import {
   useTranslations,
 } from '../../contexts/AppContext';
 
-import ChatbotThinking from '@/components/ChatbotThinking/ChatbotThinking';
-import AuthService from '@/services/authService';
-import { chatService } from '@/services/chatService';
 import { CircularProgress } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+
+import ChatbotThinking from '@/components/ChatbotThinking/ChatbotThinking';
 import ChatbotForm from '@/components/Form/ChatbotForm';
 import ChatHeader from '@/components/Header/ChatHeader';
 import ChatbotMessage, { IChat } from '@/components/Message/ChatbotMessage';
+import { chatService } from '@/services/chatService';
 import Styles from './_Chat.module.scss';
 
 const Chat = () => {
   const t = useTranslations();
-  const { setUser } = useAppContext();
-  const navigate = useNavigate();
 
   const [folioNumber, setFolioNumber] = useState('');
   const [loading, setLoading] = useState(true);

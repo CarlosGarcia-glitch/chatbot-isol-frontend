@@ -4,6 +4,7 @@
   "header": "Agente ISOL",
   "folio": "folio number",
   "folio_welcome": "Enter the folio below to load the conversation.",
+  "text_copied": "Text copied",
   "menu": {
     "chat": "Chat",
     "change_password": "Change password",
@@ -42,6 +43,7 @@
     }
   },
   "change_password": {
+    "description": "The new password must include at least one uppercase letter, at least one lowercase letter, at least one number, and at least one special character, without periods or commas.",
     "validations": {
       "no_password_match": "The new password and confirm password do not match.",
       "no_valid": "Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special case character"

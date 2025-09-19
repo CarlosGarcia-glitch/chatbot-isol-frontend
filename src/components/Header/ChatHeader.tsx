@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useTranslations, useAppContext } from '../../contexts/AppContext';
+import {
+  useTranslations,
+  useAppContext,
+  useAlert,
+} from '../../contexts/AppContext';
 import AuthService from '@/services/authService';
 import {
   Button,
@@ -10,6 +14,7 @@ import {
   MenuItem,
 } from '@mui/material';
 import { Menu as MenuIcon } from '@mui/icons-material';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ChatbotIcon from '../icons/ChatbotIcon';
 import Styles from './_ChatHeader.module.scss';
 import { menuItemsConfig, MenuItemConfig } from './menuConfig';
@@ -31,6 +36,7 @@ const ChatHeader = ({ folioNumber }: ChatHeaderProps) => {
   const location = useLocation();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const { setAlert } = useAlert();
 
   const toggleLanguage = () => {
     const newLang = language === 'en' ? 'es' : 'en';
@@ -76,77 +82,77 @@ const ChatHeader = ({ folioNumber }: ChatHeaderProps) => {
     setAnchorEl(null);
   };
 
+  const handleCopyClick = async () => {
+    try {
+      await navigator.clipboard.writeText(folioNumber ?? '');
+      setAlert(true, 'success', t.text_copied);
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
+  };
+
   const shouldShowNewChat = location.pathname === '/chat';
   const visibleMenuItems = menuItemsConfig.filter(isItemVisible);
 
   return (
     <>
-      <header className={Styles.chat_header}>
-        <section className={Styles.chat_header_top}>
-          <div className={Styles.header_info}>
+      <header className={Styles.header}>
+        <section className={Styles.header_top}>
+          <div className={Styles.header_top_info}>
             <ChatbotIcon />
             <h2 className={Styles.logo_text}>{t.header}</h2>
           </div>
 
-          <div className={Styles.new_chat_container}>
+          <div className={Styles.header_top_menu}>
             {shouldShowNewChat && (
-              <div className={Styles.new_chat}>
-                <Button
-                  onClick={handleNewConversation}
-                  className={Styles.new_chat_button}
-                >
-                  <p className={Styles.new_chat_text}>
-                    {t.menu.new_conversation}
-                  </p>
-                </Button>
-              </div>
+              <Button onClick={handleNewConversation}>
+                {t.menu.new_conversation}
+              </Button>
             )}
 
-            <div className={Styles.buttons_header}>
-              <Button
-                id="basic-button"
-                aria-controls={open ? 'basic-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-                onClick={handleClick}
-                className={Styles.menu_button}
-              >
-                <MenuIcon />
-              </Button>
-              <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                slotProps={{
-                  list: {
-                    'aria-labelledby': 'basic-button',
-                  },
-                }}
-              >
-                {visibleMenuItems.map((item) => (
-                  <MenuItem
-                    key={item.key}
-                    onClick={() => handleMenuAction(item)}
-                  >
-                    <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText>
-                      {item.key === 'chat'
-                        ? item.label
-                        : t.menu[item.label as keyof typeof t.menu]}
-                    </ListItemText>
-                  </MenuItem>
-                ))}
-              </Menu>
-            </div>
+            <Button
+              id="basic-button"
+              aria-controls={open ? 'basic-menu' : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? 'true' : undefined}
+              onClick={handleClick}
+              className={Styles.menu_button}
+            >
+              <MenuIcon />
+            </Button>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              slotProps={{
+                list: {
+                  'aria-labelledby': 'basic-button',
+                },
+              }}
+            >
+              {visibleMenuItems.map((item) => (
+                <MenuItem key={item.key} onClick={() => handleMenuAction(item)}>
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemText>
+                    {item.key === 'chat'
+                      ? item.label
+                      : t.menu[item.label as keyof typeof t.menu]}
+                  </ListItemText>
+                </MenuItem>
+              ))}
+            </Menu>
           </div>
         </section>
+        {shouldShowNewChat && folioNumber && (
+          <div className={Styles.header_bottom}>
+            <p onClick={handleCopyClick}>
+              {`${t.folio}: ${folioNumber}`}{' '}
+              <ContentCopyIcon fontSize="inherit" />
+            </p>
+          </div>
+        )}
       </header>
-      {shouldShowNewChat && folioNumber && (
-        <div className={Styles.folio_number}>
-          <p>{`${t.folio}: ${folioNumber}`}</p>
-        </div>
-      )}
     </>
   );
 };
